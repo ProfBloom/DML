@@ -151,6 +151,10 @@ namespace dml
          */
         using result_type = mem_copy_result;
 
+        [[nodiscard]] constexpr auto fence() const noexcept 
+        {
+            return mem_copy_operation(options_.enable<detail::mem_move_flag::fence>());
+        }
         /**
          * @brief Enables Blocking on Fault
          *
@@ -160,6 +164,38 @@ namespace dml
         {
             return mem_copy_operation(options_.enable<detail::mem_move_flag::block_on_fault>());
         }
+
+        [[nodiscard]] constexpr auto cache_control() const noexcept 
+        {
+            return mem_copy_operation(options_.enable<detail::mem_move_flag::cache_control>());
+        }
+
+        [[nodiscard]] constexpr auto address_1_tc_selector() const noexcept 
+        {
+            return mem_copy_operation(options_.enable<detail::mem_move_flag::address_1_tc_selector>());
+        }
+
+        [[nodiscard]] constexpr auto address_2_tc_selector() const noexcept 
+        {
+            return mem_copy_operation(options_.enable<detail::mem_move_flag::address_2_tc_selector>());
+        }
+
+        [[nodiscard]] constexpr auto strict_ordering() const noexcept 
+        {
+            return mem_copy_operation(options_.enable<detail::mem_move_flag::strict_ordering>());
+        }
+
+        [[nodiscard]] constexpr auto destination_readback() const noexcept 
+        {
+            return mem_copy_operation(options_.enable<detail::mem_move_flag::destination_readback>());
+        }
+
+        [[nodiscard]] constexpr auto destination_steering_tag_selector() const noexcept 
+        {
+            return mem_copy_operation(options_.enable<detail::mem_move_flag::destination_steering_tag_selector>());
+        }
+
+
 
         /**
          * @todo
